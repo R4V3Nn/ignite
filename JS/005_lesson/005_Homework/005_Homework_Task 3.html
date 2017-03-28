@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>005_Homework_Task 3</title>
+</head>
+<body>
+<script>
+   function setTimer () {
+    var value = +prompt("Введите число");
+    var timer = setInterval(function(){
+         document.write(value--, "<br>");
+        if (value<0) {
+            clearTimeout(timer);
+            document.write("Time is over")
+        }
+    }, 1000);
+   }
+   setTimer();
+
+</script>
+    
+</body>
+</html>
