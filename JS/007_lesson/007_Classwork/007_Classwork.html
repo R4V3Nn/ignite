@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>007_Classwork</title>
+</head>
+<body>
+	<div>Some text</div>
+	<div>Some text</div>
+	<div>Some text</div>
+	<style>
+		div {
+			width: 150px;
+			height: 150px;
+			text-align: center;
+			background-color: limegreen;
+			border: 3px dashed black;
+		}
+		span {
+			display: block;
+			width: 150px;
+			background-color: blue;
+			text-align: center;
+		}
+	</style>
+
+	<script>
+		window.onload = function() {
+			var div1 = document.body.children[0];
+			var span = document.createElement('span');
+			span.innerHTML ='New text!!!';
+			var counter = 0;
+			function move (counter) {
+				switch(counter) {
+					case 1 : div1.insertAdjacentElement('beforeBegin', span);
+					break;
+					case 2 : div1.insertAdjacentElement('afterBegin', span);
+					break;
+					case 3 : div1.insertAdjacentElement('beforeEnd', span);
+					break;
+					case 4: div1.insertAdjacentElement('afterEnd', span);
+				}
+			}
+			setInterval( function(){
+				counter++;
+				move(counter);
+				if (counter==4){
+					counter = 0;
+				}
+			}, 2000);
+
+		}
+	</script>
+	
+</body>
+</html>
