@@ -1,32 +1,62 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>007_Homework_Task 1</title>
 </head>
+
 <body>
-    <div id = "div1"></div>
-    <div id = "div2"></div>
-    <div id = "div3"></div>
+    <div class="red">1</div>
+    <div class="green">2</div>
+    <div class="blue">3</div>
     <style>
-        #div1 {
-            background-color: green;
-            width: 150px;
-            height: 150px;
+        div {
+            position: absolute;
+            width: 100px;
+            height: 100px;
         }
-                #div2 {
-            background-color: darkblue;
-            width: 150px;
-            height: 150px;
-        }
-                #div3 {
+
+        .red {
             background-color: red;
-            width: 150px;
-            height: 150px;
+        }
+
+        .green {
+            background-color: green;
+        }
+
+        .blue {
+            background-color: blue;
         }
     </style>
-    
+
+    <script>
+        window.onload = function () {
+            var divs = document.querySelectorAll("div");
+
+            function moveElements() {
+
+                function getRandom(min, max) {
+                    return Math.random() * (max - min) + min;
+                }
+                
+                
+                for (i = 0; i < divs.length; i++) {
+                    var top = getRandom(1,600);
+                var left = getRandom(1,600);
+                    divs[i].style.top = top + "px";
+                    divs[i].style.left = left + "px";
+                }
+            }
+            setInterval(function () {
+                
+                moveElements();
+            }, 1000);
+        }
+    </script>
+
 </body>
+
 </html>
