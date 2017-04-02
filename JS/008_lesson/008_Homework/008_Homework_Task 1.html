@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>008_Homework_Task 1</title>
+</head>
+
+<body>
+    <div class="wrapper">
+        <form action="" method="POST">
+            <h2>Регистрация</h2>
+            <input placeholder=" Логин" type="text" tabindex="1" id="login" autofocus><br>
+            <input placeholder="Пароль" type="text" tabindex="2" id="password"><br>
+            <input placeholder="Телефон" type="tel" tabindex="3" id="phone"><br>
+            <button name="submit" type="submit" id="submit">Отправить</button><br>
+        </form>
+    </div>
+
+    <style>
+        .error {
+            background-color: red;
+        }
+    </style>
+    <script>
+        window.onload = function () {
+            var login = document.getElementById("login");
+            var password = document.getElementById("password");
+            var phone = document.getElementById("phone");
+            var btn = document.getElementById("submit");
+            btn.onclick = function (e) {
+                e.preventDefault();
+                var loginReg = /^\D+$/;
+                var passwordReg = /^[^\$]+$/;
+                var phoneReg = /^\d+$/;
+                
+                if(!login.value.match(loginReg)){
+                    login.classList.add("error");
+                }
+                else {
+                    login.classList.remove("error");
+                }
+                if(!password.value.match(passwordReg)){
+                    password.classList.add("error");
+                }
+                else {
+                    password.classList.remove("error");
+                }
+                if(!phone.value.match(phoneReg)){
+                    phone.classList.add("error");
+                }
+                else {
+                    phone.classList.remove("error");
+                }
+            }
+        }
+    </script>
+
+</body>
+
+</html>
