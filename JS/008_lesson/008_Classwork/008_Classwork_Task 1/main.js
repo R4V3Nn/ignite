@@ -18,8 +18,5 @@ window.onload = function () {
             counter = 0;
         }
 
-
-
-
     }
 }

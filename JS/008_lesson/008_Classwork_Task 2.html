@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>008_Classwork_Task 2</title>
+</head>
+
+<body>
+    <input type="text" id="input" placeholder="Введите текст" />
+    <button id="btn">Записать</button>
+    <div id="text"></div>
+
+    <script>
+        var input = document.getElementById("input");
+        var btn = document.getElementById("btn");
+        var text = document.getElementById("text");
+        btn.onclick = function () {
+            text.innerHTML += input.value + "<br>"  ; 
+        }
+         
+    </script>
+
+</body>
+
+</html>
