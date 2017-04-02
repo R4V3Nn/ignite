@@ -4,4 +4,4 @@ function sumArgs() {
     });
 }
 
-console.log(sumArgs(4, 5, 6));
+console.log(sumArgs(1, 2, 3));
