@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <style>
+        td {
+            width: 50px;
+            height: 50px;
+            border: 1px solid black;
+        }
+    </style>
+    <script>
+       window.onload = function makeBoard(){
+            var table = document.createElement('table');
+            var rows = +prompt("Rows:");
+            var cells = +prompt("Cells:")
+            for (var i = 1; i < rows; i++) {
+                var tr = document.createElement('tr');
+                table.appendChild(tr);
+                for (var j=1; j<cells; j++) {
+                    var td = document.createElement('td');
+                table.appendChild(td); 
+                if ((i % 2==0) && (j % 2!=0) || (i % 2!=0) && (j % 2==0)) {
+                    td.style.backgroundColor = "black";
+                }   
+                }
+            }
+            document.body.appendChild(table);
+        }
+    </script>
+</body>
+
+</html>
