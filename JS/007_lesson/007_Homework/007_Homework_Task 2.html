@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>007_Homework_Task 2</title>
+</head>
+
+<body>
+    <a href="#">anchor</a>
+    <div class="element">Element</div>
+    <style>
+        div {
+            position: absolute;
+        }
+    </style>
+    <script>
+        var anchor = document.getElementsByTagName('a')[0];
+        var element = document.getElementsByClassName("element")[0];
+        function positionAt(anchor, position, element) {
+            var anchorCoords = anchor.getBoundingClientRect();
+            switch (position) {
+                case "top":
+                    element.style.left = anchorCoords.left + "px";
+                    element.style.top = anchorCoords.top - element.offsetHeight + "px";
+                    break;
+
+                case "right":
+                    element.style.left = anchorCoords.left + anchor.offsetWidth + "px";
+                    element.style.top = anchorCoords.top + "px";
+                    break;
+
+                case "bottom":
+                    element.style.left = anchorCoords.left + "px";
+                    element.style.top = anchorCoords.top + anchor.offsetHeight + "px";
+                    break;
+            }
+            document.body.appendChild(element);
+
+        }
+        positionAt(anchor, "right", element);
+    </script>
+
+</body>
+
+</html>
