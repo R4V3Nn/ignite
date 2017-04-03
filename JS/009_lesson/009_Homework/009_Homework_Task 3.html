@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>009_Homework_Task 3</title>
+</head>
+
+<body>
+    Введите X:<input id="x" type="text"> Введите Y:<input id="y" type="text">
+    <button id="button">Move</button>
+    <div id="block"></div>
+
+    <style>
+        div {
+            position: absolute;
+            top: 50px;
+            left: 50px;
+            width: 50px;
+            height: 50px;
+            background-color: yellowgreen;
+        }
+    </style>
+    <script>
+        window.onload = function () {
+            var x = document.getElementById('x');
+            var y = document.getElementById('y');
+            var block = document.getElementById('block');
+            var btn = document.getElementById('button');
+            btn.onclick = function (e) {
+                if (x.value == "" || y.value == "") {
+                    e.stopPropagation();
+                    alert("Введите координаты");
+                } else {
+                    block.style.left = x.value + "px";
+                    block.style.top = y.value + "px";
+                }
+            }
+
+        }
+    </script>
+
+</body>
+
+</html>
