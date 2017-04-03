@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>009_Classwork_Task 1</title>
+</head>
+
+<body>
+    <div>
+        <h3 id="message"></h3>
+    </div>
+    <style>
+        div {
+            width: 400px;
+            height: 250px;
+            margin: 0 auto;
+            margin-top: 150px;
+            border: 2px solid black;
+            color: red;
+        }
+
+        #message {
+            width: 200px;
+            margin: 0 auto;
+            margin-top: 110px;
+        }
+    </style>
+    <script>
+        window.onload = function () {
+            var message = document.getElementById("message");
+            document.onkeydown = function (e) {
+                if (e.ctrlKey == true && e.keyCode == '65') message.innerHTML = 'Данные выбраны';
+                e.preventDefault();
+                if (e.ctrlKey == true && e.keyCode == '83') message.innerHTML = 'Данные сохранены';
+            }
+        }
+    </script>
+</body>
+
+</html>
