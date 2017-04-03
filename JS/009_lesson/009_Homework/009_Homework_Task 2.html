@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>009_Homework_Task 2</title>
+</head>
+
+<body>
+    <div id="sale"><br><br>Sale</div>
+    <style>
+        .body {
+            overflow: hidden;
+        }
+        #sale {
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            color: black;
+            border-radius: 50%;
+            text-align: center;
+            align-content: center;
+            font-size: 18px;
+        }
+    </style>
+    <script>
+        function getRandom(min, max) {
+            return Math.floor(Math.random() * (max - min + 1)) + min;
+        }
+
+
+        var sale = document.getElementById("sale");
+        sale.onmouseover = function(){
+            var left = getRandom(100, 500);
+            var top = getRandom(100,500);
+            
+            if(left>screen.width) {
+                left = 0;
+            }
+            else {
+               sale.style.left = left + 'px'; 
+            }
+            if(top>screen.height) {
+                top = 0;
+            }
+            else {
+                sale.style.top = top + 'px';
+            }
+        }
+    </script>
+
+</body>
+
+</html>
