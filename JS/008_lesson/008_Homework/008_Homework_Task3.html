@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>008_Homework_Task 3</title>
+</head>
+
+<body>
+    <div class="calculator">
+        <h2>DOM level 0</h2>
+        A:<input type="number" id="A"> B:
+        <input type="number" id="B"> =:
+        <input type="number" id="equally">
+        <div class="buttons">
+            <button id="plus">+</button>
+            <button id="minus">-</button>
+            <button id="multiple">*</button>
+            <button id="divide">/</button>
+        </div>
+    </div>
+    <style>
+        .calculator,
+        .calculator2 {
+            width: 600px;
+            margin: 0 auto;
+        }
+
+        .buttons,
+        .buttons2 {
+            width: 100px;
+            margin: 0 auto;
+            margin-top: 30px;
+        }
+    </style>
+    <script>
+        window.onload = function () {
+            var a = document.getElementById("A");
+            var b = document.getElementById("B");
+            var equally = document.getElementById("equally");
+            var btnPlus = document.getElementById("plus");
+            btnPlus.onclick = function plus() {
+                equally.value = (+a.value) + (+b.value);
+            }
+            var btnMinus = document.getElementById("minus");
+            btnMinus.onclick = function minus() {
+                equally.value = (+a.value) - (+b.value);
+            }
+            var btnMultiple = document.getElementById("multiple");
+            btnMultiple.onclick = function multiple() {
+                equally.value = (+a.value) * (+b.value);
+            }
+
+            var btnDivide = document.getElementById("divide");
+            btnDivide.onclick = function divide() {
+                equally.value = (+a.value) / (+b.value);
+            }
+
+        }
+    </script>
+<!--DOM level 2
+    <div class="calculator2">
+        <h2>DOM level 2</h2>
+        A:<input type="number" id="A2"> B:
+        <input type="number" id="B2"> =:
+        <input type="number" id="equally2">
+        <div class="buttons">
+            <button id="plus2">+</button>
+            <button id="minus2">-</button>
+            <button id="multiple2">*</button>
+            <button id="divide2">/</button>
+        </div>
+    </div>
+
+    <script>
+        window.onload = function () {
+            var a2 = document.getElementById("A2");
+            var b2 = document.getElementById("B2");
+            var equally2 = document.getElementById("equally2");
+            var btnPlus2 = document.getElementById("plus2");
+            var btnMinus2 = document.getElementById("minus2");
+            var btnMultiple2 = document.getElementById("multiple2");
+            var btnDivide2 = document.getElementById("divide2");
+
+            function plus2() {
+                equally2.value = (+a2.value) + (+b2.value);
+            }
+
+            function minus2() {
+                equally2.value = (+a2.value) - (+b2.value);
+            }
+
+            function multiple2() {
+                equally2.value = (+a2.value) * (+b2.value);
+            }
+
+            function divide2() {
+                equally2.value = (+a2.value) / (+b2.value);
+            }
+            btnPlus2.addEventListener("click", plus);
+            btnMinus2.addEventListener("click", minus);
+            btnMultiple2.addEventListener("click", multiple);
+            btnDivide2.addEventListener("click", divide);
+        }
+    </script>-->
+
+</body>
+
+</html>

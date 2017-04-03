@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>008_Homework_Task 2</title>
+    <style>
+        #elem {
+            display: none;
+            position: fixed;
+            background-color: greenyellow;
+            border-radius: 2px;
+            width: auto;
+        }
+    </style>
+</head>
+<body>
+<button data-tooltip="подсказка длиннее, чем элемент">Короткая кнопка</button>
+<button data-tooltip="HTML<br>подсказка">Ещё кнопка</button>
+
+<div id="elem"></div>
+<script>
+    function loadHandler() {
+        function mouseOverHandler(e) {
+            var tip = document.getElementById("elem");
+            tip.style.display = "block";
+            tip.innerHTML = e.target.dataset.tooltip;
+            tip.style.left = e.clientX + 10 + "px";
+            tip.style.top = e.clientY - 10 + "px";
+        }
+        function mouseOutHandler() {
+            var tip = document.getElementById("elem");
+            tip.style.display = "none";
+        }
+        var childs = document.body.childNodes;
+        var childElems = [];
+        for (var i = 0; i < childs.length; i++) {
+            if (childs[i].nodeType == 1 && childs[i].hasAttribute("data-tooltip")) {
+                childElems.push(childs[i]);
+            }
+        }
+        for (var j = 0; j < childElems.length; j++) {
+            childElems[j].addEventListener("mouseover", mouseOverHandler);
+            childElems[j].addEventListener("mouseout", mouseOutHandler)
+        }
+    }
+    window.addEventListener("load", loadHandler)
+</script>
+</body>
+</html>
