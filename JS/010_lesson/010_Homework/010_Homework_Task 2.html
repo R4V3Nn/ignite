@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>010_Homework_Task 2</title>
+</head>
+<body>
+    <input type="button" id="btn" value="Загрузить">
+    <div id="output"></div>
+    <script>
+        window.onload = function () {
+            document.getElementById("btn").onclick = function () {
+                var xhr = new XMLHttpRequest();
+                xhr.open("GET", "Task_1_page.html");
+                xhr.timeout = 20000;
+                var xhr2 = new XMLHttpRequest();
+                xhr2.open("GET", "Task_1_page2.html");
+                xhr.timeout = 20000;
+                xhr.onreadystatechange = function () {
+                    if (xhr.readyState == 4) {
+                        if (xhr.status == 200) {
+                            document.getElementById("output").innerHTML += xhr.responseText;
+                        }
+                    }
+                };
+                xhr2.onreadystatechange = function () {
+                    if (xhr2.readyState == 4) {
+                        if (xhr2.status == 200) {
+                            document.getElementById("output").innerHTML += xhr2.responseText;
+                        }
+                    }
+                };
+                xhr2.ontimeout = function () {
+                    xhr2.abort();
+                };
+                xhr.ontimeout = function () {
+                    xhr.abort();
+                };
+                xhr.send();
+                xhr2.send();
+            }; 
+        }
+    </script>
+    
+</body>
+</html>
