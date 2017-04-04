@@ -14,14 +14,14 @@
     <script>
         window.onload = function () {
             var btn = document.getElementById("btn");
-            var container = document.getElementById("wrapper");
+            var wrapper = document.getElementById("wrapper");
             btn.onclick = function () {
                 var xhr = new XMLHttpRequest();
                 xhr.open("GET", "img.jpg");
                 xhr.send();
                 xhr.onload = function () {
                     setTimeout(function () {
-                        container.innerHTML = "<img src='img.jpg'>";
+                        wrapper.innerHTML = "<img src='img.jpg'>";
                     }, 5000);
                 };
             }
