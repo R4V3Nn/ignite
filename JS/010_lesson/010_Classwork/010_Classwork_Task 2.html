@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>010_Classwork_Task 2</title>
+</head>
+<body>
+
+<button id="loader">Загрузить</button>
+
+
+<!-- ####################################### -->
+<script>
+    window.onload = function () {
+        function loadHandler() {
+            var xhr = new XMLHttpRequest();
+            xhr.open('GET', "task_phone/phones.json");
+            xhr.send();
+            document.getElementById("loader").innerHTML = "Processing";
+            document.getElementById("loader").disabled = true;
+            xhr.onload = function () {
+                var data = JSON.parse(xhr.responseText);
+                var ul = document.createElement("ul");
+                document.body.appendChild(ul);
+                for (var i = 0; i < data.length; i++) {
+                    var li = document.createElement("li");
+                    li.innerHTML = data[i].name;
+                    ul.appendChild(li);
+                }
+            }
+        }  
+        document.getElementById("loader").addEventListener("click", loadHandler);
+    };      
+</script>
+
+</body>
+</html>
