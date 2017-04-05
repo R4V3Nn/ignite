@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>010_Homework_Task 3</title>
+</head>
+
+<body>
+    A:<input type="text" id="a"> 
+    B:<input type="text" id="b">
+    <input id="Send" type="button" value="Calculate" />
+    <p id="output"></p>
+
+    <script>
+        window.onload = function () {
+        var send=    document.getElementById("Send");
+        send.onclick = function () {
+                var A = document.getElementById('a').value;
+                var B = document.getElementById('b').value;
+                var xhr = new XMLHttpRequest();
+                xhr.open("GET", "CalcHandler.ashx?a=" + A + "&b=" + B);
+                xhr.send();
+                xhr.onload = function () {
+                    document.getElementById("output").innerHTML += xhr.responseText;
+                }
+            };
+        };
+    </script>
+
+</body>
+
+</html>
