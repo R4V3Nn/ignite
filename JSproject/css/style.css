@@ -3,6 +3,8 @@ body {
   font-size: 14px; }
 
 .main-header {
+  position: fixed;
+  width: 100%;
   background-color: rgba(184, 184, 185, 0.3); }
 
 .header-content {

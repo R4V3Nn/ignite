@@ -12,6 +12,8 @@ body {
     font-size: 14px;
 }
 .main-header {
+    position: fixed;
+    width: 100%;
     background-color: $transparent;
 }
 
