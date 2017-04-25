@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>016_Homework_Task 1</title>
+    <script src="../../lib/angular.js"></script>
+    <script src="../../lib/angular-route.js"></script>
+    <link rel="stylesheet" href="../../lib/bootstrap.css">
+    <link rel="stylesheet" href="../../lib/bootstrap-theme.css">
+    <script>
+        var app = angular.module("myApp", ["ngRoute"])
+            .config(function ($routeProvider) {
+                $routeProvider
+                    .when("/home", {
+                        templateUrl: "../task/home.html"
+                    })
+                    .when("/contact", {
+                        templateUrl: "../task/contact.html"
+                    })
+                    .otherwise({
+                        redirectTo: "/view1"
+                    });
+            });
+
+        app.controller("mainCtrl", ["$scope", function ($scope) {
+
+        }]);
+    </script>
+</head>
+
+<body ng-controller="mainCtrl">
+    <div class="well">
+        <ul class="nav nav-tabs">
+            <li><a href="#/home">Home</a></li>
+            <li><a href="#/contact">Contact</a></li>
+        </ul>
+    </div>
+    <div class="panel" ng-view></div>
+</body>

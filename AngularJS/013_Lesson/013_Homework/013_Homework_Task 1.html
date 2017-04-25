@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>013_Homework_Task 1</title>
+    <script src="../../lib/angular.js"></script>
+    <link rel="stylesheet" href="../../lib/bootstrap.css">
+    <script>
+        var app = angular.module("myApp", []);
+        app.controller("mainCtrl", ["$scope", function ($scope) {
+            $scope.block = {
+                first: false,
+                second: false,
+                third: false
+            }
+        }])
+    </script>
+</head>
+<style>
+    .block {
+        width: 150px;
+        height: 150px;
+        background: black;
+    }
+
+    .first {
+        background: white;
+    }
+
+    .second {
+        text-transform: uppercase;
+    }
+
+    .third {
+        border: 2px solid red;
+    }
+</style>
+<body ng-controller="mainCtrl">
+<div ng-class="block" class="block">text text text text</div>
+<div>
+    
+    <input type="checkbox" ng-model="block.first">firstClass </br>
+    <input type="checkbox" ng-model="block.second">secondClass </br>
+    <input type="checkbox" ng-model="block.third">thirdClass </br>
+    
+</div>
+</body>
+
+</html>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>013_Homework_Task 2</title>
+    <script src="../../lib/angular.js"></script>
+    <script>
+        var model = [{
+                text: "Lorem ipsum"
+            },
+            {
+                text: "Lorem ipsum dolor"
+            },
+            {
+                text: "Lorem ipsum dolor sit amet"
+            },
+            {
+                text: "Lorem ipsum dolor sit amet, consectetur"
+            },
+            {
+                text: "Lorem ipsum"
+            },
+            {
+                text: "Lorem ipsum dolor sit amet"
+            },
+            {
+                text: "Lorem ipsum dolor sit amet, consectetur"
+            },
+            {
+                text: "Lorem ipsum dolor"
+            },
+                        {
+                text: "Lorem ipsum dolor dd"
+            },
+                        {
+                text: "Lorem ipsum dolor 45 fhdhd s  egegeg nyn "
+            }
+        ];
+
+        var app = angular.module("myApp", []);
+        app.controller("mainCtrl",["$scope", function($scope){
+            $scope.content = model;
+
+            var filter = "";
+            $scope.myFilter = function (item) {
+                if (item.text.indexOf(filter) >= 0) {
+                    return item;
+                }
+            };
+
+            $scope.applyFilter = function () {
+                filter = $scope.filterText;
+            }
+        }])
+    </script>
+</head>
+
+<body ng-controller="mainCtrl">
+<section class="input-group">
+    <input class="form-control" type="text" ng-model="filterText" placeholder="filter text">
+    <span class="input-group-btn">
+        <button class="btn btn-default" ng-click="applyFilter()">Apply</button>
+    </span>
+</section>
+<section class="" ng-repeat="div in content | filter: myFilter ">
+    <div>{{div.text}}</div>
+</section>
+
+</body>
+
+</html>

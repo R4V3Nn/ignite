@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <script src="../../lib/angular.js"></script>
+    <script src="../../lib/angular-route.js"></script>
+    <link href="../..lib/bootstrap.css" rel="stylesheet"/>
+    <link href="../../lib/bootstrap-theme.css" rel="stylesheet"/>
+    <script>
+
+        var app = angular.module("myApp", ["ngRoute"])
+                .config(function ($routeProvider, $locationProvider) {
+                    $routeProvider
+                            .when("/view1", {templateUrl: "../task/view1.html"})
+                            .when("/view2", {templateUrl: "../task/view2.html"})
+                            .otherwise({redirectTo: "/view1"});
+                    $locationProvider.html5Mode({enable: true, requireBase: true});
+                });
+
+
+        app.controller("mainCtrl", ["$scope", function ($scope) {
+
+        }]);
+
+    </script>
+</head>
+<body ng-controller="mainCtrl">
+<div class="well">
+    <ul class="nav nav-tabs">
+        <li><a href="#/view1">view1</a></li>
+        <li><a href="#/view2">view2</a></li>
+    </ul>
+</div>
+<div class="panel" ng-view></div>
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="textOutputApp">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>011_Classwork_Task 2</title>
+    <link rel="stylesheet" href="../../lib/bootstrap.css">
+    <link rel="stylesheet" href="../../lib/bootstrap-theme.css">
+    <script src="../../lib/angular.js"></script>
+    <script>
+        angular.module("textOutputApp", [])
+            .controller("myController", ["$scope", function (a) {
+                text = "";
+                a.text = text;
+                a.showText = function () {
+                    var output = document.getElementById("output");
+                    output.innerHTML = a.text;
+                }
+            }])
+    </script>
+</head>
+
+<body ng-controller="myController">
+    <input class="input-lg" type="text" ng-model="text">
+    <input type="button" class="btn-lg btn-info" value="click here!" ng-click="showText()">
+    <div id="output"></div>
+
+</body>
+
+</html>

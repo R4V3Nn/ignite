@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>014_Homework_Task 1</title>
+    <script src="../../lib/angular.js"></script>
+    <link rel="stylesheet" href="../../lib/bootstrap.css">
+    <link rel="stylesheet" href="../../lib/bootstrap-theme.css">
+    <script>
+        var app = angular.module('myApp', []);
+
+        // factory 
+        app.factory("myCalc1", function () {
+            return {
+                add: function (a, b) {
+                    return a + b;
+                },
+                sub: function (a, b) {
+                    return a - b;
+                },
+                mult: function (a, b) {
+                    return a * b;
+                },
+                div: function (a, b) {
+                    return a / b;
+                }
+            }
+        });
+
+        // service 
+        app.service("myCalc2", function () {
+            this.add = function (a, b) {
+                return a + b;
+            };
+            this.sub = function (a, b) {
+                return a - b;
+            };
+            this.mult = function (a, b) {
+                return a * b;
+            };
+            this.div = function (a, b) {
+                return a / b;
+            }
+        });
+
+        // provider 
+        app.provider("myCalc3", function () {
+            return {
+                $get: function () {
+                    return {
+                        add: function (a, b) {
+                            return a + b;
+                        },
+                        sub: function (a, b) {
+                            return a - b;
+                        },
+                        mult: function (a, b) {
+                            return a * b;
+                        },
+                        div: function (a, b) {
+                            return a / b;
+                        }
+                    }
+                }
+            }
+        });
+
+        app.controller('mainCtrl', ['$scope', "myCalc1", "myCalc2", "myCalc3", function ($scope, myCalc1, myCalc2,
+            myCalc3) {
+
+            $scope.numA = "";
+            $scope.numB = "";
+            $scope.res1 = "";
+            $scope.res2 = "";
+            $scope.res3 = "";
+
+            $scope.doAdd = function () {
+                $scope.res1 = myCalc1.add(+$scope.numA, +$scope.numB);
+                $scope.res2 = myCalc1.add(+$scope.numA, +$scope.numB);
+                $scope.res3 = myCalc1.add(+$scope.numA, +$scope.numB);
+            };
+
+            $scope.doSub = function () {
+                $scope.res1 = myCalc1.sub(+$scope.numA, +$scope.numB);
+                $scope.res2 = myCalc1.sub(+$scope.numA, +$scope.numB);
+                $scope.res3 = myCalc1.sub(+$scope.numA, +$scope.numB);
+            };
+
+            $scope.doMult = function () {
+                $scope.res1 = myCalc1.mult(+$scope.numA, +$scope.numB);
+                $scope.res2 = myCalc1.mult(+$scope.numA, +$scope.numB);
+                $scope.res3 = myCalc1.mult(+$scope.numA, +$scope.numB);
+            };
+
+            $scope.doDiv = function () {
+                $scope.res1 = myCalc1.div(+$scope.numA, +$scope.numB);
+                $scope.res2 = myCalc1.div(+$scope.numA, +$scope.numB);
+                $scope.res3 = myCalc1.div(+$scope.numA, +$scope.numB);
+            };
+        }]);
+    </script>
+</head>
+
+<body ng-controller="mainCtrl">
+    <form name="myForm">
+        <div class="input-group">
+            <input type="text" class="form-control" ng-model="numA">
+            <input type="text" class="form-control" ng-model="numB">
+        </div>
+        <div class="btn-block">
+            <button class="btn btn-info" ng-click="doAdd()">+</button>
+            <button class="btn btn-info" ng-click="doSub()">-</button>
+            <button class="btn btn-info" ng-click="doMult()">*</button>
+            <button class="btn btn-info" ng-click="doDiv()">/</button>
+        </div>
+        <div class="well">
+            <div>myCalc1 : {{res1}}</div>
+            <div>myCalc2 : {{res2}}</div>
+            <div>myCalc3 : {{res3}}</div>
+        </div>
+    </form>
+</body>
+
+</html>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="HelloWorldApp">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>011_Classwork_Task 1</title>
+    <script src="../../lib/angular.js"></script>
+</head>
+<script>
+    var model = "Hello World!";
+
+    var HelloWorldApp = angular.module("HelloWorldApp", []);
+
+    HelloWorldApp.controller("HelloWorldCtrl", ["$scope", function($scope){
+        $scope.message = model;
+    }]);
+</script>
+<body ng-controller="HelloWorldCtrl">
+    <span>{{message}}</span>
+
+    
+</body>
+</html>

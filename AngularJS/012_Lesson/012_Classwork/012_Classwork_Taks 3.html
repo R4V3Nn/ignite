@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>012_Classwork_Task 2</title>
+    <script src="../../lib/angular.js"></script>
+    <link rel="stylesheet" href="../../lib/bootstrap.css">
+    <script>
+        var app = angular.module("myApp", []);
+        app.controller("myAppCtrl", ["$scope", function (a) {
+            a.items = [{
+                    name: "B Item",
+                    price: 10.9,
+                    category: "Category 1",
+                    count: 10,
+                    tax: 1.12,
+                    expiration: 10
+                },
+                {
+                    name: "A Item",
+                    price: 1.1,
+                    category: "Category 1",
+                    count: 8,
+                    tax: 0.55,
+                    expiration: 12
+                },
+                {
+                    name: "D Item",
+                    price: 2.6,
+                    category: "Category 2",
+                    count: 7,
+                    tax: 0.22,
+                    expiration: 5
+                },
+                {
+                    name: "C Item",
+                    price: 17.5,
+                    category: "Category 2",
+                    count: 33,
+                    tax: 2.77,
+                    expiration: 10
+                }
+            ];
+            a.displayItems = {
+                name: true,
+                price: true,
+                category: true,
+                count: true,
+                tax: true,
+                expiration: true
+            }
+        }]);
+    </script>
+</head>
+
+<body ng-controller="myAppCtrl">
+    <table class="table">
+        <thead>
+            <tr>
+                <th><input type="checkbox" ng-model="displayItems.name">Show</th>
+                <th><input type="checkbox" ng-model="displayItems.price">Show</th>
+                <th><input type="checkbox" ng-model="displayItems.category">Show</th>
+                <th><input type="checkbox" ng-model="displayItems.count">Show</th>
+                <th><input type="checkbox" ng-model="displayItems.tax">Show</th>
+                <th><input type="checkbox" ng-model="displayItems.expiration">Show</th>
+            </tr>
+            <tr>
+                <th>Name</th>
+                <th>Price</th>
+                <th>Category</th>
+                <th>count</th>
+                <th>tax</th>
+                <th>expiration</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="item in items">
+
+           <td><ng-include src="displayItems.name ? 'files/name.html' : ''"></ng-include></td>
+            <td><ng-include src="displayItems.price ? 'files/price.html' : ''"></ng-include></td>
+            <td><ng-include src="displayItems.category ? 'files/category.html' : ''"></ng-include></td>
+            <td><ng-include src="displayItems.count ? 'files/count.html' : ''"></ng-include></td>
+            <td><ng-include src="displayItems.tax ? 'files/tax.html' : ''"></ng-include></td>
+            <td><ng-include src="displayItems.expiration ? 'files/expiration.html' : ''"></ng-include></td>
+            </tr>
+        </tbody>
+
+        </tbody>
+    </table>
+
+</body>
+
+</html>

@@ -1,0 +1,16 @@
+﻿<form name="contactForm">
+    <label>username: <input type="text" class="input-lg" name="userName"/></label>
+    <label>age: <input type="text" class="input-lg" name="age"/></label>
+    <label>email: <input type="email" class="input-lg" name="userEmail"/></label>
+    <label>employed: <input type="checkbox" name="employed"></label>
+</form>
+<ul>
+    <li ng-repeat="person in people" ng-click="gotoPerson($index)">{{$index}}:{{person.name}}</li>
+</ul>
+<!--
+var people = [{name: 'Vasya', age: 20, email: 'vasya@mail.ru', employed: false},
+{name: 'Masha', age: 25, email: 'm@m', employed: true},
+{name: 'Petya', age: 27, email: 'petya@stuff', employed: true},
+{name: 'John', age: 36, email: 'johnDoe@mail', employed: true},
+{name: 'Jane', age: 28, email: 'janeDoe@mail', employed: false}]
+-->

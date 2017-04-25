@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>014_Classwork_Task 1</title>
+    <script src="../../lib/angular.js"></script>
+    <link rel="stylesheet" href="../../lib/bootstrap.css">
+    <script>
+        var app = angular.module('myApp', []);
+
+        app.controller('mainCtrl', ['$scope', "clickCounterService", function ($scope, clickCounterService) {
+            $scope.msg = "click count : ";
+            $scope.output = "click count : 0";
+
+            $scope.clickCountHandler = function () {
+                $scope.output = clickCounterService($scope.msg);
+            }
+        }]);
+
+        app.factory("clickCounterService", function ($log) {
+            var clickCounter = 1;
+            return function (msg) {
+                var output = msg + clickCounter++;
+                $log.info(output);
+                return output;
+            };
+        }); 
+    </script>
+</head>
+
+<body ng-controller="mainCtrl">
+    <input type="button" class="btn btn-default" ng-click="clickCountHandler()" value="Click me">
+    <span>{{output}}</span>
+</body>
+
+</html>

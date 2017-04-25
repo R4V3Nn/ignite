@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>016_Homework_Task 3</title>
+    <script src="../../lib/angular.js"></script>
+    <script src="../../lib/angular-route.js"></script>
+    <link href="../../lib/bootstrap.css" rel="stylesheet" />
+    <link href="../../lib/bootstrap-theme.css" rel="stylesheet" />
+    <script>
+        var people = [{
+                name: 'Vasya',
+                age: 20,
+                email: 'vasya@mail.ru',
+                employed: false
+            },
+            {
+                name: 'Masha',
+                age: 25,
+                email: 'm@m',
+                employed: true
+            },
+            {
+                name: 'Petya',
+                age: 27,
+                email: 'petya@stuff',
+                employed: true
+            },
+            {
+                name: 'John',
+                age: 36,
+                email: 'johnDoe@mail',
+                employed: true
+            },
+            {
+                name: 'Jane',
+                age: 28,
+                email: 'janeDoe@mail',
+                employed: false
+            }
+        ];
+
+        angular.module("myApp", ["ngRoute"])
+            .config(function ($routeProvider, $locationProvider) {
+                $routeProvider
+                    .when("/home", {
+                        templateUrl: "../task/home.html",
+                        controller: "homeCtrl"
+                    })
+                    .when("/contact", {
+                        templateUrl: "../task/contact.html"
+                    })
+                    .when("contact/:name/:age/:email/:employed", {
+                        templateUrl: "../task/contact.html",
+                        controller: "contactCtrl"
+                    })
+                    .otherwise({
+                        redirectTo: "/home2"
+                    });
+
+                $locationProvider.html5Mode({
+                    enable: true,
+                    requireBase: true
+                });
+            })
+
+            .controller("homeCtrl", ["$scope", "$location", function ($scope, $location) {
+                $scope.people = people;
+
+                $scope.gotoPerson = function (index) {
+                    var path = "contact/" +
+                        $scope.people[index].name + "/" +
+                        $scope.people[index].age + "/" +
+                        $scope.people[index].email + "/" +
+                        $scope.people[index].employed;
+
+                    $location.path(path);
+                    console.log(path);
+                }
+
+            }])
+
+            .controller("contactCtrl", ["$scope", "$routeParams", function ($scope, $routeParams) {
+                $scope.name = $routeParams.name;
+                $scope.age = $routeParams.age;
+                $scope.email = $routeParams.email;
+                $scope.employed = $routeParams.employed === "true";
+            }]);
+    </script>
+</head>
+
+<body>
+    <div class="well">
+        <ul class="nav nav-tabs">
+            <li><a href="#/home">Home</a></li>
+            <li><a href="#/contact">Contact</a></li>
+        </ul>
+    </div>
+    <div class="panel" ng-view></div>
+</body>

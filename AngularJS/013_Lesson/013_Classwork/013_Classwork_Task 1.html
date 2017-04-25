@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>013_Classwork_Task 1</title>
+    <script src="../../lib/angular.js"></script>
+    <link rel="stylesheet" href="../../lib/bootstrap.css">
+    <script>
+        var app = angular.module("myApp", []);
+        app.controller("mainCtrl", ["$scope", function ($scope) {
+            $scope.applyClass = "";
+
+            $scope.applyStyle = function () {
+                $scope.applyClass = ["green", "resize"];
+            }
+        }])
+
+    </script>
+</head>
+<style>
+    div {
+        width: 150px;
+        height: 150px;
+        border: 1px solid black;
+    }
+
+    .green {
+        background: green;
+    }
+
+    .resize{
+        width: 250px;
+        height: 200px;
+    }
+</style>
+
+<body ng-controller="mainCtrl">
+    <div ng-class="applyClass"></div>
+   <button class="btn btn-default" ng-click="applyStyle()">Change</button>
+
+</body>
+
+</html>

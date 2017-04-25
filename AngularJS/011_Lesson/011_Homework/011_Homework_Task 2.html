@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" ng-app="ToDoList">
+<meta charset="UTF-8">
+
+<head>
+    <title>ToDo List (Task2)</title>
+    <script src="../../lib/angular.js"></script>
+    <link href="../../lib/bootstrap.css" rel="stylesheet" />
+    <link href="../../lib/bootstrap-theme.css" rel="stylesheet" />
+    <script>
+        // Добавьте AngularJS контроллер
+        var model = [{
+
+                name: "Купить молоко",
+                description: " Сходить на рынок и купить молоко",
+                date: new Date(2018, 2, 18),
+                check: "true"
+            },
+            {
+
+                name: "Посмотреть видеоурок по AngularJS",
+                description: "Досмотреть до конца урок на itvdn.com",
+                date: new Date(2018, 2, 18),
+                check: "true"
+            }
+
+        ];
+        angular.module("ToDoList", [])
+            .controller("ToDoListCtrl", ["$scope", function ($scope) {
+                $scope.data = model;
+                $scope.addNewTask = function () {
+                    $scope.data.push({
+                        name: $scope.taskName,
+                        description: $scope.taskDescription,
+                        date: $scope.taskDate,
+                        check: $scope.taskCheck
+                    });
+                    $scope.taskName = "";
+                    $scope.taskDescription = "";
+                    $scope.taskDate = new Date();
+                    $scope.taskCheck = false;
+                }
+                $scope.editTask = function (index) {
+                    var task = $scope.data[index];
+                    $scope.index = index;
+                    $scope.taskName = task.name;
+                    $scope.taskDescription = task.description;
+                    $scope.taskDate = task.date;
+                    $scope.taskCheck = task.check;
+                }
+                $scope.save = function () {
+                    var index = $scope.index;
+                    $scope.data[index].name = $scope.taskName
+                    $scope.data[index].description = $scope.taskDescription
+                    $scope.data[index].date = $scope.taskDate
+                    $scope.data[index].check = $scope.taskCheck
+
+                }
+
+            }])
+    </script>
+
+</head>
+
+<body ng-controller="ToDoListCtrl">
+
+    <div class="container">
+
+        <h3>ToDo List</h3>
+
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Description</th>
+                    <th>Date</th>
+                    <th>Completed</th>
+                </tr>
+            </thead>
+            <tr ng-repeat="task in data">
+
+                <td>{{task.name}}</td>
+                <td>{{task.description}}</td>
+                <td>{{task.date | date: 'dd/MM/yyyy'}}</td>
+                <td>{{task.check}}</td>
+                <td>
+                    <button class="btn btn-edit" ng-click="editTask($index)">&#9998;</button>
+                </td>
+            </tr>
+        </table>
+
+        <div>
+            <!-- Форма для добавления новых задач -->
+            <form role="form">
+                <h2>Добавить задачу</h2>
+                <div class="form-group">
+                    <label>Name</label>
+                    <input type="text" class="form-control" ng-model="taskName">
+                </div>
+                <div class="form-group">
+                    <label>Due Date</label>
+                    <input type="date" class="form-control" ng-model="taskDate">
+                </div>
+                <div class="form-group">
+                    <label>Description</label>
+                    <input type="text" class="form-control" ng-model="taskDescription">
+                </div>
+                <div class="checkbox">
+                    <label><input type="checkbox" ng-model="taskCheck">Completed</label>
+                </div>
+                <button class="btn btn-default" ng-click="addNewTask()">Add task</button>
+                <button class="btn btn-default" ng-click="save($index)">Save</button>
+            </form>
+        </div>
+    </div>
+</body>
+
+</html>

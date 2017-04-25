@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>013_Homework_Task 3</title>
+    <script src="../../lib/angular.js"></script>
+    <link rel="stylesheet" href="../../lib/bootstrap.css">
+    <link rel="stylesheet" href="../../lib/bootstrap-theme.css">
+    <style>
+        form {
+            max-width: 75%;
+            margin: 5px;
+        }
+
+
+        form.ng-pristine {
+            border: 1px dotted cornflowerblue;
+        }
+
+        form.ng-valid {
+            border: 1px dotted green;
+            
+        }
+
+        input.ng-invalid {
+            background-color: red;
+        }
+
+        input.ng-valid {
+            background-color: green;
+        }
+
+        input.ng-untouched {
+            background-color: skyblue;
+        }
+
+        div>div>span {
+            font-size: 20px;
+        }
+    </style>
+    <script>
+        var app = angular.module("myApp", []);
+        app.controller("mainCtrl", ["$scope", function ($scope) {
+
+            $scope.nameRegex = /^.{3,10}$/;
+            $scope.mailRegex = /^\w+@[a-zA-Z_]+?\.[a-zA-Z]+$/;
+            $scope.phoneRegex = /^[0-9]*$/;
+
+            $scope.submitHandler = function () {
+                alert("Sending data. Form is valid!")
+            }
+        }]);
+    </script>
+</head>
+
+<body ng-controller="mainCtrl">
+    <form class="form-horizontal" name="myForm">
+        <div class="form-group">
+            <label class="control-label col-sm-2"></label>
+            <div class="col-sm-3">
+                <span>Form </span> <span ng-show="myForm.$valid">is valid</span></div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-sm-2">Name</label>
+            <div class="col-sm-3">
+                <input ng-model="myName" type="text" class="form-control" ng-pattern="nameRegex" required placeholder="3 to 10 chars"></div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-sm-2">e-mail</label>
+            <div class="col-sm-3">
+                <input ng-model="myEmail" type="email" class="form-control" ng-pattern="mailRegex" required name="email"></div>
+
+            <span ng-show="myForm.email.$error.email">Invalid email address.</span>
+            <span ng-show="myForm.email.$error.required">Email is required.</span>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-sm-2">phone</label>
+            <div class="col-sm-3">
+                <input ng-model="myTel" type="tel" class="form-control" ng-pattern="phoneRegex"></div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-sm-2">password</label>
+            <div class="col-sm-3">
+                <input ng-model="myPass1" type="password" class="form-control" required></div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-sm-2">password again</label>
+            <div class="col-sm-3">
+                <input ng-model="myPass2" type="password" class="form-control" required ng-pattern="myPass1"></div>
+        </div>
+        <div class="col-sm-2"></div>
+        <input class="btn btn-primary col-sm-2" type="submit" ng-disabled="myForm.$invalid" ng-click="submitHandler()">
+    </form>
+
+</body>
+
+</html>
