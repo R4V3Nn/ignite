@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>018_Classwork_Task 1</title>
+    <script src="../../lib/angular.js"></script>
+    <script src="../../lib/angular-route.js"></script>
+    <link rel="stylesheet" href="../../lib/bootstrap.css">
+    <link rel="stylesheet" href="../../lib/bootstrap-theme.css">
+        <script>
+
+        var app = angular.module("myApp", []);
+
+        app.controller("mainCtrl", ["$scope", "$interval", function ($scope, $interval) {
+            $scope.counter = 0;
+
+            $scope.startCounter = function () {
+                interval = $interval(function () {
+                    $scope.counter++;
+                }, 1000)
+            }
+        }]);
+
+        app.directive("buttonDir", function () {
+            return{
+                restrict: "A",
+                templateUrl: "template/counter.html",
+
+                controller: "mainCtrl"
+            }
+        })
+
+    </script>
+</head>
+<body ng-controller="mainCtrl">
+    <div button-dir></div>
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>018_Homework_Task 3</title>
+    <script src="../../lib/angular.js"></script>
+    <script src="../../lib/angular-route.js"></script>
+    <link rel="stylesheet" href="../../lib/bootstrap.css">
+    <link rel="stylesheet" href="../../lib/bootstrap-theme.css">
+        <script>
+
+        var app = angular.module("myApp", []);
+
+        app.directive("dialogBox", function () {
+            return{
+                restrict: "AE",
+                transclude: true,
+                template: "<div class='well'><div class='well-sm' ng-transclude=''></div></div>"
+            }
+        })
+
+    </script>
+</head>
+<body>
+<div dialog-box>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tenetur temporibus laudantium, nam tempore aut repellat nesciunt fugiat quasi ipsa ratione dolores impedit non debitis illo provident ex consectetur, modi quo?</div>
+</body>
+</html>

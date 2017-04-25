@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>018_Homework_Task 1</title>
+    <script src="../../lib/angular.js"></script>
+    <script src="../../lib/angular-route.js"></script>
+    <link rel="stylesheet" href="../../lib/bootstrap.css">
+    <link rel="stylesheet" href="../../lib/bootstrap-theme.css">
+        <script>
+
+        var app = angular.module("myApp", []);
+
+        app.controller("mainCtrl", ["$scope", function ($scope) {
+            $scope.items = [
+                {name: "Table", price: 44.10},
+                {name: "Chair", price: 21.20},
+                {name: "Pillow", price: 12.20},
+                {name: "Picture", price: 112.70},
+                {name: "Lamp", price: 28.31}
+            ]
+
+            $scope.curr = $scope.items[0].price;
+            $scope.currLink = function (key) {
+                $scope.curr = $scope.items[key].price;
+            }
+        }]);
+
+        app.directive("makeNav", function () {
+            return {
+                restrict: "A",
+                template: "<ul><li ng-repeat='item in items track by $index'<span ng-click='currLink($index)'>{{item.name}}</span></li></ul>",
+                scope: false,
+                controller: "mainCtrl"
+            }
+        });
+
+        app.directive("takeItems", function () {
+            return {
+                restrict: "A",
+                template: "<p>{{curr}}</p>",
+                scope: false,
+                controller: "mainCtrl"
+            }
+        })
+
+
+    </script>
+</head>
+<body ng-controller="mainCtrl">
+<div class="well" make-nav></div>
+<div class="well" take-items></div>
+</body>
+</html>

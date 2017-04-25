@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>018_Homework_Task 2</title>
+    <script src="../../lib/angular.js"></script>
+    <script src="../../lib/angular-route.js"></script>
+    <link rel="stylesheet" href="../../lib/bootstrap.css">
+    <link rel="stylesheet" href="../../lib/bootstrap-theme.css">
+    <style>
+        .red {
+            color: red
+        }
+    </style>
+    <script>
+        var app = angular.module("myApp", []);
+
+        app.controller("mainCtrl", ["$scope", function ($scope) {
+            $scope.items = ["item1", "item2", "item3", "item4", "item5", "item6","item1", "item2", "item3", "item4", "item5", "item6"]
+        }]);
+
+        app.directive("makeUl", function () {
+            return {
+                restrict: "A",
+                priority: 2,
+                link: function (scope, elem, attrs) {
+                    var items = scope.items;
+                    var ul = angular.element("<ul></ul>");
+
+                    for (var i = 0; i < items.length; i++) {
+                        ul.append(angular.element("<li>").html(items[i]));
+                    }
+                    elem.append(ul);
+                }
+            }
+        });
+
+        app.directive("styleUl", function () {
+            return {
+                restrict: "A",
+                priority: 3,
+                link: function (scope, elem, attrs) {
+                    var lis = elem.find("li");
+
+                    for (var i = 0; i < lis.length; i++) {
+                        if (i % 2) {
+                            angular.element(lis[i]).addClass("red");
+                        }
+                    }
+                }
+            }
+        })
+    </script>
+</head>
+
+<body ng-controller="mainCtrl">
+    <div class="well" make-ul style-ul></div>
+</body>
+
+</html>

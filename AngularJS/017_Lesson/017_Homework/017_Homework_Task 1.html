@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>017_Homework_Task 1</title>
+    <script src="../../lib/angular.js"></script>
+    <script src="../../lib/angular-route.js"></script>
+    <link rel="stylesheet" href="../../lib/bootstrap.css">
+    <link rel="stylesheet" href="../../lib/bootstrap-theme.css">
+    <script>
+        var app = angular.module("myApp", []);
+
+        app.controller("mainCtrl", ["$scope", function ($scope) {
+            $scope.items = [{
+                    name: "B Item",
+                    price: 10.9,
+                    category: "Category 1",
+                    count: 10,
+                    tax: 1.12,
+                    expiration: 10
+                },
+                {
+                    name: "A Item",
+                    price: 1.1,
+                    category: "Category 1",
+                    count: 8,
+                    tax: 0.55,
+                    expiration: 12
+                },
+                {
+                    name: "D Item",
+                    price: 2.6,
+                    category: "Category 2",
+                    count: 7,
+                    tax: 0.22,
+                    expiration: 5
+                },
+                {
+                    name: "C Item",
+                    price: 17.5,
+                    category: "Category 2",
+                    count: 33,
+                    tax: 2.77,
+                    expiration: 10
+                }
+            ];
+        }]);
+
+        app.directive("customTable", function () {
+            return {
+                restrict: "A",
+                scope: {
+                    array: "=customTable"
+                },
+                link: function (scope, elem, attrs) {
+                    var array = scope.array;
+
+                    if (angular.isDefined(array)) {
+                        var table = angular.element("<table class='table'>");
+                        var thead = angular.element("<thead>");
+
+                        for (var k in array[0]) {
+                            thead.append(angular.element("<th>").text(k));
+                        }
+
+                        var tbody = angular.element("<tbody>");
+                        for (var i = 0; i < array.length; i++) {
+                            var row = angular.element("<tr>");
+                            for (var k in array[i]) {
+                                row.append(angular.element("<td>").text(array[i][k]));
+                            }
+                            tbody.append(row);
+                        }
+                        table.append(thead)
+                            .append(tbody);
+                        elem.append(table);
+
+                    }
+                }
+            }
+        })
+    </script>
+</head>
+
+<body ng-controller="mainCtrl">
+    <div custom-table="items"></div>
+</body>
+
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>017_Homework_Task 3</title>
+    <script src="../../lib/angular.js"></script>
+    <script src="../../lib/angular-route.js"></script>
+    <link rel="stylesheet" href="../../lib/bootstrap.css">
+    <link rel="stylesheet" href="../../lib/bootstrap-theme.css">
+     <script>
+
+        var app = angular.module("myApp", []);
+
+        app.controller("mainCtrl", ["$scope", function ($scope) {
+            $scope.items = [
+                {name: 'Home', href: '#/'},
+                {name: 'Services', href: '#/services'},
+                {name: 'Work', href: '#/work'},
+                {name: 'Clients', href: '#/clients'},
+                {name: 'Contact', href: '#/contact'}
+            ];
+        }]);
+
+        app.directive("myMenu", function () {
+            return {
+                restrict: "AE",
+                replace: true,
+                scope: {
+                    array: "=myMenu"
+                },
+                template: '<div class="item" ng-repeat="item in array"><a href="{{item.href}}">{{item.name}}</a></div>'
+            };
+        });
+
+    </script>
+</head>
+<body ng-controller="mainCtrl">
+<div class="container">
+    <h4>new menu:</h4>
+    <div class=dropdown-menu" my-menu="items"></div>
+</div>
+</body>
+</html>
