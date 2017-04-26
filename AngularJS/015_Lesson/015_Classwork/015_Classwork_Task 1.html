@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>015_Classwork_Task 1</title>
+    <script src="../../lib/angular.js"></script>
+    <link rel="stylesheet" href="../../lib/bootstrap.css">
+    <script>
+        var app = angular.module('myApp', []);
+        app.controller('mainCtrl', ['$scope', '$parse', function ($scope, $parse) {
+            $scope.operations = [
+                '+','-','/','*'
+            ]
+            $scope.params = {};
+            $scope.count = function (operation) {
+                var params = {
+                    a: +$scope.params.a,
+                    b: +$scope.params.b
+                };
+                $scope.result = $parse('a' + operation + 'b')(params);
+            }
+        }]);
+    </script>
+</head>
+<body ng-controller="mainCtrl">
+    <div class="container">
+        <div class="btn-group">
+            <input type="text" ng-model="params.a" />
+            <input type="text" ng-model="params.b" />
+        </div> <br>
+        <button class="btn btn-primary" ng-repeat="item in operations" ng-click="count(item)" >{{item}}</button>
+
+        <h2>Result:{{result}}</h2>
+    </div>
+</body>
+</html>

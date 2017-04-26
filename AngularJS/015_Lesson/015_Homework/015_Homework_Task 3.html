@@ -1,0 +1,97 @@
+<!--### Задача 3 
+Используя любой сторонний сервис, измените усовершенствуйте решение задачи 2, 
+так что бы прокрутка выполнялась плавно.
+https://github.com/oblador/angular-scroll -->
+
+<html lang="en" ng-app="myApp">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>015_Homework_Task 3</title>
+    <script src="../../lib/angular.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-scroll/1.0.0/angular-scroll.min.js"></script>
+    <link rel="stylesheet" href="../../lib/bootstrap.css">
+    <script>
+        var app = angular.module('myApp', ['duScroll']);
+
+        app.controller('mainCtrl', function ($scope, $anchorScroll, $location, $document) {
+            $scope.items = [{
+                    id: 'home',
+                    name: 'Home'
+                },
+                {
+                    id: 'about',
+                    name: 'About'
+                },
+                {
+                    id: 'works',
+                    name: 'Works'
+                },
+                {
+                    id: 'contacts',
+                    name: 'Contacts'
+                },
+            ];
+            $location.path('');
+            $scope.gotoAnchor = function ($id) {
+                $document.scrollToElementAnimated(document.getElementById($id), 0, 800);
+            }
+        });
+    </script>
+    <style>
+        nav {
+            position: fixed;
+            width: 100%;
+            background-color: yellow;
+        }
+
+        ul {
+            text-align: center;
+            list-style-type: none;
+            cursor: pointer;
+            color: black;
+            margin: 0;
+            padding: 0;
+        }
+
+        li {
+            display: inline-block;
+            padding: 20px;
+        }
+
+
+
+        .block {
+
+            width: 100%;
+            box-sizing: border-box;
+            height: 500px;
+            border-top: 2px solid yellow;
+            text-align: center;
+            font-size: 25px;
+        }
+    </style>
+</head>
+
+<body ng-controller="mainCtrl">
+    <nav>
+        <ul>
+          <a ng-click="gotoAnchor(item.id)" href="#{{item.id}}"  ng-repeat="item in items"  du-scrollspy >
+            <li>
+                {{item.name}}
+            </li>
+          </a>
+
+        </ul>
+    </nav>
+    <div id="wrapper">
+        <div ng-repeat="item in items" id="{{item.id}}" class="block" >
+            {{item.name}}
+        </div>
+    </div>
+
+</body>
+
+</html>

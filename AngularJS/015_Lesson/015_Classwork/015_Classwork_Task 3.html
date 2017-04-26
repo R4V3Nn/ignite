@@ -1,0 +1,34 @@
+<!--### Задача 3 
+Используя сервис $compile выведите имя в шаблоне жирным начертанием используя тег <strong>:
+
+```
+"Hello my name is {{name}}"
+var data = { name: "<strong>Ivan</strong>" }-->
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>015_Classwork_Task 3</title>
+    <script src="../../lib/angular.js"></script>
+    <link rel="stylesheet" href="../../lib/bootstrap.css">
+        <script>
+        var app = angular.module('myApp', []);
+        app.controller('mainCtrl', function ($scope, $compile) {
+            
+            $scope.getName = function ($event) {
+                $scope.data = "<strong>Artem</strong>";
+                $scope.name = $compile($scope.data)($scope);
+                angular.element(document.getElementById('name')).append($scope.name);
+            }
+        });
+    </script>
+</head>
+<body>
+    <div class="showBlock" ng-controller="mainCtrl">
+        <input type="button" class="btn btn-primary" value="Get Name" ng-click="getName($event)" />
+        <p>Hello my name is <span id='name'></span></p>
+    </div>
+</body>
+</html>

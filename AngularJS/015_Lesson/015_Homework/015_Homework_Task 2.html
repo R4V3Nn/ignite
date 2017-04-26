@@ -1,0 +1,100 @@
+<!--### Задача 2 
+Создайте страницу с произвольным количеством блоков текста с заголовками.
+ Создайте список заголовков вверху страницы. Используя сервис $anchorScroll, реализуйте навигацию на странице.
+ При нажатии на заголовок в списке вверху страницы, страница должна быть автоматически прокручена до блока текста с соответствующим заголовком.-->
+<html lang="en" ng-app="myApp">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>015_Homework_Task 1</title>
+    <script src="../../lib/angular.js"></script>
+    <link rel="stylesheet" href="../../lib/bootstrap.css">
+    <script>
+        var app = angular.module('myApp', []);
+        app.run(function ($anchorScroll) {
+            $anchorScroll.yOffset = 50;
+        })
+        app.controller('mainCtrl', function ($scope, $anchorScroll, $location) {
+            $scope.items = [{
+                    id: 'home',
+                    name: 'Home'
+                },
+                {
+                    id: 'about',
+                    name: 'About'
+                },
+                {
+                    id: 'works',
+                    name: 'Works'
+                },
+                {
+                    id: 'contacts',
+                    name: 'Contacts'
+                },
+            ];
+            $location.path('');
+            $scope.scrollToAnchor = function ($id) {
+                if ($location.hash() !== $id) {
+                    $location.hash($id);
+                } else {
+                    $anchorScroll();
+                }
+            }
+        });
+    </script>
+    <style>
+        nav {
+            position: fixed;
+            width: 100%;
+            background-color: yellow;
+        }
+
+        ul {
+            text-align: center;
+            list-style-type: none;
+            cursor: pointer;
+            color: black;
+            margin: 0;
+            padding: 0;
+           
+
+        }
+
+        li {
+             display: inline-block;
+            padding: 20px;
+        }
+
+
+
+        .block {
+
+            width: 100%;
+            box-sizing: border-box;
+            height: 500px;
+            border-top: 2px solid yellow;
+            text-align: center;
+            font-size: 25px;
+        }
+    </style>
+</head>
+
+<body ng-controller="mainCtrl">
+    <nav>
+        <ul>
+            <li ng-repeat="item in items" ng-click="scrollToAnchor(item.id)">
+                {{item.name}}
+            </li>
+        </ul>
+    </nav>
+    <div>
+        <div ng-repeat="item in items" id="{{item.id}}" class="block">
+            {{item.name}}
+        </div>
+    </div>
+
+</body>
+
+</html>
