@@ -1,0 +1,62 @@
+/*==========  Desktop First Method  ==========*/
+
+/* Large Devices, Wide Screens */
+@media only screen and (max-width : 1200px) {
+	
+}
+
+/* Medium Devices, Desktops */
+@media only screen and (max-width : 991px) {
+	#home i{
+		font-size: 30px;
+		margin-top: 35px;
+		cursor: pointer;
+	}
+	#home .menu.active{
+		display: block !important;
+	}
+	#home .menu{
+		display: none;
+		position: absolute;
+		width: 100%;
+		left: 0;
+		top:100px;
+		background-color: rgba(0,0,0,0.6);
+	}
+	#home .menu li{
+		display: block;
+		line-height: 28px;
+		float: none;
+		text-align: center;
+		color:#ccc;
+		width: 100%;
+		border-top: 1px solid #fff;
+		line-height: 24px;
+		padding: 5px 10px;
+
+	}
+	#home .menu li a{
+	border:none;
+	color: #fff;
+	padding: 0px;
+	}
+	#home .menu li:after{
+		display: none;
+	}
+	.ourservices h4:after{
+	display: none;
+	}
+			
+}
+
+/* Small Devices, Tablets */
+@media only screen and (max-width : 767px) {
+	.landing .btn{
+		display: none;
+	}	
+
+}
+	
+	
+
+

@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" ng-app="myApp">
+
+<head>
+    <base href="/">
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="css/normalize.css" />
+    <link rel="stylesheet" href="css/media.css" />
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" href="css/bootstrap-grid.min.css" />
+    <link rel="stylesheet" href="css/font-awesome.min.css" />
+    <link href="https://fonts.googleapis.com/css?family=Raleway:200,300,400,500,700" rel="stylesheet">
+    <script src="js/angular.js"></script>
+    <script src="js/angular_route.js"></script>
+    <script src="js/angular-scroll.js"></script>
+    <script src="js/app.js"></script>
+
+
+    <title>Angular Project </title>
+
+
+</head>
+
+<body ng-controller="mainCtrl">
+    <header id="home">
+        <div class="nav">
+            <div class="container">
+                <div class="row">
+                    <a href="#" class="logo"><img src="img/logo.png" alt=""></a>
+
+
+                    <ul class="menu right hidden-xs hidden-sm" id="top-menu" ng-class="{ 'active': showBlock }">
+                        <li ng-class="{true: 'active'}[local == 'home']"><a href="#" scroll-to="home" ng-click="local='home'">Home</a></li>
+                        <li ng-class="{true: 'active'}[local == 'service']"><a href="#" scroll-to="service" ng-click="local='service'">Services</a></li>
+                        <li ng-class="{true: 'active'}[local == 'work']"><a href="#" scroll-to="work" ng-click="local='work'">Portfolio</a></li>
+                        <li ng-class="{true: 'active'}[local == 'about']"><a href="#" scroll-to="about" ng-click="local='about'">About</a></li>
+                        <li ng-class="{true: 'active'}[local == 'news']"><a href="#" scroll-to="news" ng-click="local='news'">news</a></li>
+                        <li ng-class="{true: 'active'}[local == 'contacts']"><a href="#" scroll-to="contacts" ng-click="local='contacts'">Contacts</a></li>
+                    </ul>
+                    <i class="fa fa-bars hidden-md hidden-lg right" aria-hidden="true" id="btn-menu" ng-click="showBlock = ! showBlock"></i>
+
+                </div>
+            </div>
+        </div>
+        <div class="landing">
+            <img src="img/landing.jpg" alt="">
+            <div>
+                <h1>we make websites</h1>
+                <div class="btn" scroll-to="work">start tour</div>
+            </div>
+        </div>
+
+    </header>
+
+    <div id="service">
+        <div class="container">
+            <div class="row">
+                <div class="ourservices clearfix">
+                    <div class="col-md-3 col-sm-6" ng-class="{'active': count==0 }">
+                        <i class="fa fa-television" aria-hidden="true" ng-init="count=0" ng-click="count=0"></i>
+                        <h4>web design</h4>
+                    </div>
+                    <div class="col-md-3 col-sm-6" ng-class="{'active': count==1 }">
+                        <i class="fa fa-pencil-square-o" aria-hidden="true" ng-click="count=1"></i>
+                        <h4>graphic design</h4>
+                    </div>
+                    <div class="col-md-3 col-sm-6" ng-class="{'active': count==2 }">
+                        <i class="fa fa-cog" aria-hidden="true" ng-click="count=2"></i>
+                        <h4>programing</h4>
+                    </div>
+                    <div class="col-md-3 col-sm-6" ng-class="{'active': count==3 }">
+                        <i class="fa fa-camera" aria-hidden="true" ng-click="count=3"></i>
+                        <h4>photography</h4>
+                    </div>
+                </div>
+                <div class="switchbox" ng-switch on="count">
+                    <p ng-switch-when="0">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Recusandae quasi sunt magnam, dolorum, quae
+                        omnis doloremque dolor molestiae molestias quis? Sapiente, a dolorum laboriosam ratione incidunt
+                        totam, cupiditate nihil in.</p>
+                    <p ng-switch-when="1">Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of </p>
+                    <p ng-switch-when="2"> There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly </p>
+                    <p ng-switch-when="3">It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English.</p>
+                </div>
+
+
+
+            </div>
+        </div>
+    </div>
+
+    <div class="responsive">
+        <div class="container">
+            <div class="row">
+                <div class="buttons">
+                    <div>start tour
+                    </div>
+                    <div class="active">for all divices
+                    </div>
+                </div>
+                <div class="content clearfix">
+                    <div class="col-md-6">
+                        <img src="img/phones.png" alt="">
+                    </div>
+                    <div class="col-md-6">
+                        <span>Fully Responsive</span>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Debitis dolore distinctio quaerat necessitatibus.
+                            Architecto quam ratione ullam excepturi iusto sapiente earum placeat delectus, assumenda molestias
+                            expedita, amet enim soluta consectetur odio, adipisci voluptatum dolores, iure!</p>
+                        <div class="btn" scroll-to="contacts">get now</div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="work">
+        <div class="container">
+            <div class="row">
+                <h3>Our Portfolio</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Mollitia laudantium impedit debitis labore voluptatibus
+                    natus reiciendis quos esse inventore facilis libero, aliquid dolore dicta est amet soluta ipsum porro
+                    vero sit doloribus, q</p>
+                <ul class="work menu">
+                    <li ng-click="category='all'">All</li>
+                    <li ng-click="category='web design'">Web design</li>
+                    <li ng-click="category='photography'">photography</li>
+                    <li ng-click="category='graphic design'">grapshic design</li>
+
+                </ul>
+
+            </div>
+        </div>
+        <div class="galery clearfix">
+            <div class="col-lg-2 col-md-4 col-sm-6" ng-repeat="photo in photos | skipItems:category">
+                <div class="hov">
+                    <h2>simple image</h2>
+                    <p>{{photo.category}}</p>
+                </div>
+                <img ng-src="{{'img/'+photo.name+'.jpg'}}" alt="">
+            </div>
+
+        </div>
+    </div>
+    <div class="stats" id="stats">
+        <div class="container">
+            <div class="row">
+                <div test-dir>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="about">
+        <div class="container">
+            <div class="row">
+                <h3>We are the one</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Porro consequuntur, temporibus molestiae aut fugit
+                    cum neque voluptates consectetur blanditiis. Dolorem dicta deleniti deserunt unde, quos quo veritatis
+                    quidem. Tempora ab voluptates expedita, sunt et velit?</p>
+                <div test-dir2 clearfix></div>
+            </div>
+        </div>
+    </div>
+
+    <div id="news">
+        <div class="container">
+            <div class="row">
+                <h3>Check our news</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eaque eos iste perferendis voluptatem nam repellendus,
+                    error, ipsam officiis non eveniet.</p>
+                <div class="news" ng-repeat="new in news | orderBy:'-date' | limitTo:4 ">
+                    <div class="col-md-4">
+                        <div class="newsdat right">
+                            <p>{{new.date | date:'dd'}} </p>
+                            <span> <br>{{new.date | date:'MMMM'}} </span>
+
+                        </div>
+
+                    </div>
+                    <div class="col-md-6">
+                        <p> {{new.text}}</p>
+                        <a href="{{ new.id}}" class="right">Read More</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div ng-view></div>
+
+    <div id="contacts">
+        <div class="container">
+            <div class="row">
+                <h3>Contact Us</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sit quaerat quos incidunt magni quas minima ut
+                    laudantium illo fugit, et debitis ullam harum a dolor assumenda, mollitia maxime molestias earum repellendus
+                    aliquid amet distinctio quod!</p>
+
+                <form action=" " id="form" name="myForm" ng-submit="submitHandler(myForm.$valid)">
+
+                    <div class="input-box">
+                        <div style="text-align:left">
+                            <div>
+                                <input name="name" placeholder="Your name here" type="text" ng-model="name" ng-pattern="nameRegex" required /></div>
+                            <p ng-show="myForm.name.$invalid && !myForm.name.$pristine" class="help-block">Enter correct name </p>
+
+                        </div>
+                        <div style="text-align:right">
+                            <div>
+                                <input name="email" placeholder="Your email here" type="text" ng-model="email" ng-pattern="mailRegex" required /></div>
+                            <p ng-show="myForm.email.$invalid && !myForm.email.$pristine" class="help-block">Enter correct email </p>
+                        </div>
+                        <div>
+                            <div>
+                                <input name="message" placeholder="Your message here" type="text" ng-model="message" ng-pattern="messageRegex" required/></div>
+                            <p ng-show="myForm.message.$invalid && !myForm.message.$pristine" class="help-block">Message less than 20 characters </p>
+                        </div>
+                    </div>
+                    <input type="submit" class="btn right" value="Send Message" />
+
+                </form>
+            </div>
+        </div>
+
+    </div>
+    <div class="footer">
+        <div class="map">
+            <p>Awesome Address 432</p>
+            <p>ourmail@sometype.com</p>
+            <p>+321(0)32 123 343 49</p>
+        </div>
+    </div>
+    <footer>
+        <a href="#" scroll-to="home"><i class="fa fa-arrow-circle-o-up" aria-hidden="true"></i></a>
+        <p> © 2017 - <span>Kat</span> All Right Reserved</p>
+    </footer>
+
+</body>
+
+</html>

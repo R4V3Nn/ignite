@@ -1,0 +1,14 @@
+<div class="col-md-3 team" ng-repeat="member in teams">
+	<div>
+	<img ng-src="{{ 'img/' +member.img +'.jpg' }}" alt="">
+		<h4>{{member.name}}</h4>
+		<p>{{member.position}}</p>
+	</div>
+	<span>{{member.text}}</span>
+	<div class="hack">
+	<i class="fa fa-facebook" aria-hidden="true"></i>
+	<i class="fa fa-twitter" aria-hidden="true"></i>
+	<i class="fa fa-google-plus" aria-hidden="true"></i>
+	<i class="fa fa-dribbble" aria-hidden="true"></i>
+	</div>
+</div>
