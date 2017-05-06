@@ -21,7 +21,7 @@
 		width: 100%;
 		left: 0;
 		top:100px;
-		background-color: rgba(0,0,0,0.6);
+		background-color: #fff;
 	}
 	#home .menu li{
 		display: block;
@@ -37,7 +37,7 @@
 	}
 	#home .menu li a{
 	border:none;
-	color: #fff;
+	color: #000;
 	padding: 0px;
 	}
 	#home .menu li:after{
