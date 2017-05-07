@@ -1,8 +1,7 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
+var React = require('react');
+var ReactDOM = require('react-dom');
 
-console.log(document.getElementById('root'))
 ReactDOM.render(
-  <h1>Hello, world!</h1>,
-  document.getElementById('hello')
+    <h1>Hello World!</h1>,
+    document.getElementById('task')
 );
