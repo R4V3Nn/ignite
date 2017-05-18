@@ -35,6 +35,7 @@ module.exports = {
       '025_Lesson/025_Classwork/025_Classwork_Task 2/build/bundle': './025_Lesson/025_Classwork/025_Classwork_Task 2/src/main.jsx',
       '025_Lesson/025_Classwork/025_Classwork_Task 3/build/bundle': './025_Lesson/025_Classwork/025_Classwork_Task 3/src/main.jsx',
       '025_Lesson/025_Homework/025_Homework_Task 1/build/bundle': './025_Lesson/025_Homework/025_Homework_Task 1/src/main.jsx',
+      '026_Lesson/026_Classwork/026_Classwork_Task 1/build/bundle': './026_Lesson/026_Classwork/026_Classwork_Task 1/src/main.jsx',
   },
   output: {
     filename: '[name].js'
