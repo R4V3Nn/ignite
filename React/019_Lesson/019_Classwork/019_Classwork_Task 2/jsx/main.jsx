@@ -1,3 +1,6 @@
+// ### Задача 2  
+// Реализуйте задание задачи 1 с помощью создания React компонента 
+
 var React = require('react');
 var ReactDOM = require('react-dom');
 

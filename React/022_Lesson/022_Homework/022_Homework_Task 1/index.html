@@ -1,0 +1,44 @@
+<!--### Задача 1 
+Создайте класс Person со слеюующими свойствами:  
+*  Конструктор принимает 4 аргумента: firstName(значение по умолчанию – “John”), lastName(значение по умолчанию – “Doe”), age(по умолчанию, если свойство не указано, то 0)  и gender(по умолчанию – “Male”). Значения записываются в this.firstName, this.lastName, this.age и this.gender соответственно. 
+*  Метод fullName, который не принимает аргументов и возвращает полное имя: e.g. “Jon Doe”. 
+*  Метод sayHi, который выводит на экран текст “Hello, my  name is “ + fullName.  -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>022_Homework_Task 1</title>
+    <script src="https://npmcdn.com/babel-core@5.8.38/browser.min.js"></script>
+</head>
+
+<body>
+
+    <script type="text/babel">
+        'use strict';
+        class User {
+            constructor(firstName = 'John', lastName = 'Doe', age = 0, gender = 'Male') {
+                this.firstName = firstName;
+                this.lastName = lastName;
+                this.age = age;
+                this.gender = gender;
+            }
+            fullName() {
+                return `${this.firstName} ${this.lastName}`
+            }
+            sayHi() {
+                alert(`Hello, my name is ${this.fullName()}`);
+            }
+        }
+        let user = new User;
+        user.sayHi(); 
+    </script>
+
+
+
+</body>
+
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title></title>
+    <meta charset="utf-8" />
+
+
+    <script src="https://npmcdn.com/babel-core@5.8.38/browser.min.js"></script>
+
+    
+
+</head>
+
+<body>
+
+    <div id="example"></div>
+
+
+
+    <script type="text/babel">
+        'use strict';
+        //Promise – это специальный объект, который содержит своё состояние. Вначале pending («ожидание»), 
+        //затем – одно из: fulfilled («выполнено успешно») или rejected («выполнено с ошибкой»).
+        // Создаётся объект promise
+        let promise = new Promise((resolve, reject) => {
+            setTimeout(() => {
+                // переведёт промис в состояние fulfilled с результатом "result"
+                resolve("image.jpg");
+            }, 1000);
+        });
+        // promise.then навешивает обработчики на успешный результат или ошибку
+        promise
+            .then(
+                (result) => {
+                    let img = document.createElement('img');
+                    img.src = result;
+                    document.getElementById('example').appendChild(img);
+                    // первая функция-обработчик - запустится при вызове resolve
+                    alert("Fulfilled: " + result); // result - аргумент resolve
+                },
+                (error) => {
+                    // вторая функция - запустится при вызове reject
+                    alert("Rejected: " + error); // error - аргумент reject
+                }
+            );
+    </script>
+
+
+</body>
+
+</html>

@@ -1,0 +1,52 @@
+<!--### Задача 2 
+Создайте класс User, который наследует от класса Person (из предыдущей задачи),
+  со свойствами signUpDate(дата регистрации, по умолчанию 0) и id.
+   Создайте несколько экземпляров класса и запишите их в массив users. -->
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>022_Homework_Task 2</title>
+    <script src="https://npmcdn.com/babel-core@5.8.38/browser.min.js"></script>
+</head>
+
+<body>
+    <script type="text/babel">
+        'use strict';
+        class Person {
+            constructor(firstName = 'John', lastName = 'Doe', age = 0, gender = 'Male') {
+                this.firstName = firstName;
+                this.lastName = lastName;
+                this.age = age;
+                this.gender = gender;
+            }
+            fullName() {
+                return `${this.firstName} ${this.lastName}`
+            }
+            sayHi() {
+                //alert(`Hello, my name is ${this.fullName()}`);
+            }
+        }
+        let person = new Person("Jack");
+        person.sayHi(); // Jack
+        class User extends Person {
+            constructor(firstName, lastName, age, gender, signUpDate = 0, id) {
+                super(firstName, lastName, age, gender);
+                this.signUpDate = signUpDate;
+                this.id = id;
+            }
+        }
+        let user1 = new User('Ivan', 'Ivanov', '35', 'm', "7.12.1994", 22);
+        let user2 = new User('Rob', 'Lenovo', 22, 'm', '3.08.2000', 17);
+        let users = [user1, user2];
+        console.log(users); //вывод
+    </script>
+
+</body>
+
+</html>
