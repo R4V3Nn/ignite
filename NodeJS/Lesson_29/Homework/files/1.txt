@@ -1,0 +1,11 @@
+host: 127.0.0.1:1337;
+connection: keep-alive;
+content-length: 9;
+origin: http://127.0.0.1:1337;
+user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.36;
+content-type: text/plain;charset=UTF-8;
+accept: */*;
+dnt: 1;
+referer: http://127.0.0.1:1337/;
+accept-encoding: gzip, deflate, br;
+accept-language: en-US,en;q=0.8,ru-RU;q=0.6,ru;q=0.4,uk;q=0.2;
